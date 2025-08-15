@@ -40,10 +40,11 @@ app.get("/download", async (req, res) => {
 
       const response = await fetch(imageUrl);
       if (!response.ok) throw new Error("Failed to fetch image");
+      const nodeStream = Readable.fromWeb(response.body);
 
       res.setHeader("Content-Type", "image/jpg"); 
       res.setHeader("Content-Disposition", `attachment; filename=compressed_image+${Date.now()}.jpg`);
-      response.body.pipe(res);
+      nodeStream.pipe(res);
     } catch (err) {
       console.error(err);
       res.status(500).send("Failed to download image");
