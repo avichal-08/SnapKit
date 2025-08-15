@@ -17,7 +17,7 @@ app.post('/upload',upload.single('image'),async(req,res)=>{
 
     const {quality}=req.query;
     const stream=cloudinary.uploader.upload_stream({
-        folder:'test_uploads',
+        folder:'SnapKit_uploads',
         quality,
         fetch_format: "jpg"
     },(error,result)=>{

@@ -36,11 +36,11 @@ export default function Compress() {
   const handleDownload = async () => {
     try {
       const imageUrl = encodeURIComponent(url);
-      const res = await fetch(`${api_url}/download?url=${imageUrl}`);
-      if (!res.ok) throw new Error("Download failed");
+      const res = await axios.get(`${api_url}/download?url=${imageUrl}`, {
+      responseType: "blob"
+      });
 
-      const blob = await res.blob();
-      const downloadUrl = window.URL.createObjectURL(blob);
+      const downloadUrl = window.URL.createObjectURL(res.data);
 
       const link = document.createElement("a");
       link.href = downloadUrl;
