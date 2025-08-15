@@ -5,6 +5,11 @@ import cloudinary from './config/cloudinary.js';
 import streamifier from "streamifier";
 const app = express();
 app.use(cors());
+
+app.get('/test',(req,res)=>{
+    res.send("Active")
+})
+
 app.post('/upload',upload.single('image'),async(req,res)=>{
     if (!req.file) 
         return res.status(400).send("No file uploaded");
