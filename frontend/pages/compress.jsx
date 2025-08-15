@@ -7,6 +7,7 @@ export default function Compress() {
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(null);
   const [value, setValue] = useState(50);
+  const api_url=import.meta.env.VITE_API_URL
 
   const handleFileChange = (e) => setFile(e.target.files[0]);
 
@@ -19,7 +20,7 @@ export default function Compress() {
     formData.append("image", file);
 
     try {
-      const res = await axios.post(`http://localhost:3000/upload?quality=${100 - value}`, formData, {
+      const res = await axios.post(`${api_url}/upload?quality=${100 - value}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setLoading(false);
@@ -34,7 +35,7 @@ export default function Compress() {
   const handleDownload = async () => {
     try {
       const imageUrl = encodeURIComponent(url);
-      const res = await fetch(`http://localhost:3000/download?url=${imageUrl}`);
+      const res = await fetch(`${api_url}/download?url=${imageUrl}`);
       if (!res.ok) throw new Error("Download failed");
 
       const blob = await res.blob();
