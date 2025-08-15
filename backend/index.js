@@ -3,6 +3,7 @@ import cors from 'cors';
 import upload from './config/multer.js';
 import cloudinary from './config/cloudinary.js';
 import streamifier from "streamifier";
+import { Readable } from "stream";
 const app = express();
 app.use(cors());
 
