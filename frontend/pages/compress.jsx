@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import Bolt from '../src/loader';
+import Bolt from '../utils/loader';
+import { FaGithub } from "react-icons/fa";
 
 export default function Compress() {
   const [file, setFile] = useState(null);
@@ -56,8 +57,10 @@ export default function Compress() {
 
   return (
     <div className="bg-white w-full max-w-xl rounded-2xl shadow-xl p-8 flex flex-col items-center gap-6">
-      
-      <h1 className="text-2xl font-bold text-gray-800">Image Compressor</h1>
+      <div className='flex w-full justify-evenly'>
+        <h1 className="text-2xl font-bold text-gray-800">Image Compressor</h1>
+        <a href="https://github.com/avichal-08/SnapKit" target="_blank" rel="noopener noreferrer"><FaGithub size={30}/></a>  
+      </div>
       <p className="text-gray-500 text-center text-sm">
         Upload your image, choose compression level, and download it instantly.
       </p>
