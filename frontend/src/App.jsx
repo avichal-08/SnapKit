@@ -1,13 +1,12 @@
 import './App.css'
-import FileUpload from './fileUpload'
+import Compress from '../pages/compress'
 
 function App() {
   return (
-    <div className='bg-blue-200 w-screen h-screen pl-127 pt-15'>
-      <FileUpload/>
+    <div className="min-h-screen w-full bg-blue-100 lg:pl-32 pt-10 flex justify-center items-start">
+      <Compress />
     </div>
   )
 }
 
 export default App
-
