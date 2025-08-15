@@ -41,11 +41,9 @@ app.get("/download", async (req, res) => {
       const response = await fetch(imageUrl);
       if (!response.ok) throw new Error("Failed to fetch image");
 
-      const buffer = Buffer.from(await response.arrayBuffer());
-
       res.setHeader("Content-Type", "image/jpg"); 
       res.setHeader("Content-Disposition", `attachment; filename=compressed_image+${Date.now()}.jpg`);
-      res.send(buffer);
+      response.body.pipe(res);
     } catch (err) {
       console.error(err);
       res.status(500).send("Failed to download image");

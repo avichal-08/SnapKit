@@ -17,7 +17,7 @@ export default function Bolt(){
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
                 <motion.path
                 initial={{pathLength:0,fill:"var(--color-neutral-50)"}}
-                animate={{pathLength:1,fill:"var(--color-pink-300)"}}
+                animate={{pathLength:1,fill:"var(--color-blue-500)"}}
                 transition={{
                     duration:2,
                     repeat:Infinity,
