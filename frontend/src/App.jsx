@@ -4,6 +4,7 @@ import React,{ lazy} from 'react';
 const Compress =React.lazy(()=>import('../pages/compress'));
 const Bgremove =React.lazy(()=>import('../pages/bgremove'));
 const FormatChange =React.lazy(()=>import('../pages/formatChange'));
+const ObjRemove =React.lazy(()=>import('../pages/objremove'));
 const Home =React.lazy(()=>import('../pages/home'));
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Route path='/compress' element={<Compress />}/>
       <Route path='/bgremove' element={<Bgremove/>}/>
       <Route path='/format' element={<FormatChange/>}/>
+      <Route path='/objremove' element={<ObjRemove/>}/>
     </Routes>
     </div>
     </BrowserRouter>
