@@ -10,7 +10,7 @@ router.post('/upload',upload.single('image'),async(req,res)=>{
     const {bg}=req.query;
 
     const transformation=[
-        { effect: "background_removal" }
+        { effect: "background_removal"}
     ];
     if(!(bg==="none")){
         transformation.push({ background: `${bg}` });
