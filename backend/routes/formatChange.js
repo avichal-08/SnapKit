@@ -8,11 +8,12 @@ router.post('/upload',upload.single('image'),async(req,res)=>{
     if (!req.file) 
         return res.status(400).send("No file uploaded");
 
-    const {quality}=req.query;
+    const {format}=req.query;
+
     const stream=cloudinary.uploader.upload_stream({
         folder:'SnapKit_uploads',
-        quality,
-        fetch_format: "png"
+        format: `${format}`,
+        fetch_format: `${format}`
     },(error,result)=>{
         if(error)
             return res.status(500).send(error);

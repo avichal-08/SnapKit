@@ -7,10 +7,18 @@ const router = express.Router();
 router.post('/upload',upload.single('image'),async(req,res)=>{
     if (!req.file) 
         return res.status(400).send("No file uploaded");
+    const {bg}=req.query;
+
+    const transformation=[
+        { effect: "background_removal" }
+    ];
+    if(!(bg==="none")){
+        transformation.push({ background: `${bg}` });
+    };
 
     const stream=cloudinary.uploader.upload_stream({
         folder:'SnapKit_uploads',
-        transformation: [{ effect: "background_removal" } ],
+        transformation,
         format: "png",
         fetch_format: "png"
     },(error,result)=>{

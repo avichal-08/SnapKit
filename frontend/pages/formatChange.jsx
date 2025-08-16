@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import Bolt from '../utils/loader';
 
-export default function Compress() {
+export default function FormatChange() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(null);
-  const [value, setValue] = useState(50);
+  const [format, setFormat] = useState("jpg");
   const api_url=import.meta.env.VITE_API_URL;
 
   const handleFileChange = (e) => setFile(e.target.files[0]);
@@ -20,7 +20,7 @@ export default function Compress() {
     formData.append("image", file);
 
     try {
-      const res = await axios.post(`${api_url}/api/v1/compress/upload?quality=${100 - value}`, formData, {
+      const res = await axios.post(`${api_url}/api/v1/formatchange/upload?format=${format}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setLoading(false);
@@ -43,7 +43,7 @@ export default function Compress() {
 
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = `compressed_image_${Date.now()}.png`;
+      link.download = `snapkit_image_${Date.now()}.${format}`;
       document.body.appendChild(link);
       link.click();
       link.remove();
@@ -53,12 +53,14 @@ export default function Compress() {
       alert("Download failed");
     }
   };
+  
+  const formats = ["jpg", "png", "webp","gif"];
 
   return (
     <div className="bg-white w-full max-w-xl rounded-2xl shadow-xl p-8 flex flex-col items-center gap-6">
-      <h1 className="text-2xl font-bold text-gray-800">Image Compressor</h1>
+      <h1 className="text-2xl font-bold text-gray-800">Format Convertor</h1>
       <p className="text-gray-500 text-center text-sm">
-        Upload your image, choose compression level, and download it instantly.
+        Upload your image, choose format, and download it instantly.
       </p>
 
       <input 
@@ -68,18 +70,23 @@ export default function Compress() {
       />
 
       <div className="w-full">
-        <label className="block mb-1 font-medium text-gray-700">Compression Level</label>
-        <div className="flex items-center gap-3">
-          <input 
-            type="range" 
-            min="0" 
-            max="100" 
-            value={value} 
-            step="2" 
-            onChange={(e) => setValue(e.target.value)}  
-            className="w-full accent-blue-500 cursor-pointer"
-          />
-          <div className="text-blue-600 font-semibold w-12 text-right">{value}%</div>
+        <label className="block mb-1 font-medium text-gray-700">Selected Format:</label>
+        <div className="flex flex-wrap gap-4 mt-2">
+          {formats.map((fmt) => (
+            <label 
+              key={fmt} 
+              className="flex items-center gap-2 cursor-pointer relative select-none"
+            >
+              <input
+                type="radio"
+                name="format"
+                checked={format === fmt}
+                onChange={() => setFormat(fmt)}
+                className={`w-6 h-6 border-2 rounded-full cursor-pointer transition ${format === fmt ? "bg-blue-500 border-blue-500" : "border-gray-600"}`}
+              />
+              {fmt.toUpperCase()}
+            </label>
+          ))}
         </div>
       </div>
 
@@ -103,7 +110,7 @@ export default function Compress() {
             onClick={handleDownload} 
             className="bg-green-500 text-white w-full py-2 rounded-lg font-semibold hover:bg-green-600 transition duration-200 cursor-pointer"
           >
-            Download Compressed Image
+            Download {format.toUpperCase} Image
           </button>
         </div>
       )}
