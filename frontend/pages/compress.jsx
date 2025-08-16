@@ -21,7 +21,7 @@ export default function Compress() {
     formData.append("image", file);
 
     try {
-      const res = await axios.post(`${api_url}/upload?quality=${100 - value}`, formData, {
+      const res = await axios.post(`${api_url}/api/v1/compress/upload?quality=${100 - value}`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
       setLoading(false);
@@ -36,7 +36,7 @@ export default function Compress() {
   const handleDownload = async () => {
     try {
       const imageUrl = encodeURIComponent(url);
-      const res = await axios.get(`${api_url}/download?url=${imageUrl}`, {
+      const res = await axios.get(`${api_url}/api/v1/download?url=${imageUrl}`, {
       responseType: "blob"
       });
 
