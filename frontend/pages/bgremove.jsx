@@ -54,7 +54,7 @@ export default function Bgremove() {
     }
   };
 
-  const bgcolor = ["none", "white", "black","blue","red"];
+  const bgcolor = ["none", "white", "black","blue","red","yellow","gray","pink","navy blue","teal","orange","cyan"];
 
   return (
     <div className="bg-white w-full max-w-xl rounded-2xl shadow-xl p-8 flex flex-col items-center gap-6">
