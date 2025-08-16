@@ -2,7 +2,7 @@ import React, { useState,useRef} from 'react';
 import axios from 'axios';
 import Bolt from '../utils/loader';
 
-export default function ObjRemove() {
+export default function ObjectRemove() {
   const [file, setFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [url, setUrl] = useState(null);
@@ -73,7 +73,7 @@ export default function ObjRemove() {
 
       <div className="w-full">
         <div className="block mb-1 font-medium text-gray-700">Enter Description:</div>
-        <input type="text" ref={objectRef} rows={1} className='w-full p-2 text-md min-h-10 focus:outline-none focus:border-gray-500 border-2 border-gray-400'/>
+        <input type="text" ref={objectRef} className='w-full p-2 text-md min-h-10 focus:outline-none focus:border-gray-500 border-2 border-gray-400'/>
       </div>
 
       <button 
