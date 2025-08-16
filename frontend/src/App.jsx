@@ -1,11 +1,19 @@
 import './App.css'
-import Compress from '../pages/compress'
+import { BrowserRouter,Route,Routes } from "react-router-dom"
+import React,{ lazy} from 'react';
+const Compress =React.lazy(()=>import('../pages/compress'));
+const Bgremove =React.lazy(()=>import('../pages/bgremove'));
 
 function App() {
   return (
+    <BrowserRouter>
     <div className="min-h-screen w-full bg-blue-100 lg:pl-32 pt-10 flex justify-center items-start">
-      <Compress />
+    <Routes>
+      <Route path='/compress' element={<Compress />}/>
+      <Route path='/bgremove' element={<Bgremove/>}/>
+    </Routes>
     </div>
+    </BrowserRouter>
   )
 }
 
