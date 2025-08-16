@@ -1,6 +1,6 @@
 import express from 'express';
-import upload from './config/multer.js';
-import cloudinary from './config/cloudinary.js';
+import upload from '../config/multer.js';
+import cloudinary from '../config/cloudinary.js';
 import streamifier from "streamifier";
 const router = express.Router();
 
