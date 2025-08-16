@@ -2,7 +2,7 @@ import { motion } from "motion/react"
 export default function Bolt(){
     return(
         <div className="relative">
-            <div className="mt-[20%] ml-[40%] absolute">
+            <div className="absolute">
                 <motion.svg  
                 xmlns="http://www.w3.org/2000/svg"  
                 width="60"  

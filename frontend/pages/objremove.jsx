@@ -83,7 +83,7 @@ export default function ObjectRemove() {
         {loading ? "Uploading..." : "Upload"}
       </button>
 
-      {loading && <div className="flex justify-center min-h-10"><Bolt /></div>}
+      {loading && <div className="flex justify-center -ml-14 min-h-10"><Bolt /></div>}
 
       {url && (
         <div className="w-full bg-gray-50 border border-gray-200 rounded-xl p-4 flex flex-col items-center shadow-inner">
