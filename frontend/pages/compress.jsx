@@ -44,7 +44,7 @@ export default function Compress() {
 
       const link = document.createElement("a");
       link.href = downloadUrl;
-      link.download = `compressed_image_${Date.now()}.jpg`;
+      link.download = `compressed_image_${Date.now()}.png`;
       document.body.appendChild(link);
       link.click();
       link.remove();

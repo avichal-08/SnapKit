@@ -11,8 +11,8 @@ router.get("/", async (req, res) => {
       if (!response.ok) throw new Error("Failed to fetch image");
       const nodeStream = Readable.fromWeb(response.body);
 
-      res.setHeader("Content-Type", "image/jpg"); 
-      res.setHeader("Content-Disposition", `attachment; filename=compressed_image+${Date.now()}.jpg`);
+      res.setHeader("Content-Type", "image/png"); 
+      res.setHeader("Content-Disposition", `attachment; filename=compressed_image+${Date.now()}.png`);
       nodeStream.pipe(res);
     } catch (err) {
       console.error(err);

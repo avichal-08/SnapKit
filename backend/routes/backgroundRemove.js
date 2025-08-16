@@ -10,8 +10,9 @@ router.post('/upload',upload.single('image'),async(req,res)=>{
 
     const stream=cloudinary.uploader.upload_stream({
         folder:'SnapKit_uploads',
-         transformation: [{ effect: "background_removal" } ],
-        fetch_format: "jpg"
+        transformation: [{ effect: "background_removal" } ],
+        format: "png",
+        fetch_format: "png"
     },(error,result)=>{
         if(error)
             return res.status(500).send(error);
